@@ -14,13 +14,13 @@ describe('Get Question By Slug', () => {
 
   it('should be able to get a question by slug', async () => {
     const newQuestion = makeQuestion({
-      slug: Slug.create('any_slug'),
+      slug: Slug.create('any-slug'),
     })
 
     await inMemoryQuestionsRepository.create(newQuestion)
 
     const { question } = await sut.execute({
-      slug: 'any_slug',
+      slug: 'any-slug',
     })
 
     expect(question.id).toBeTruthy()
