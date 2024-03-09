@@ -29,14 +29,14 @@ describe('Delete Answer Comment', () => {
 
   it('should not be able to delete another user answer comment', async () => {
     const answerComment = makeAnswerComment({
-      authorId: new UniqueEntityID('author-1'),
+      authorId: new UniqueEntityID('author-id'),
     })
 
     await inMemoryAnswerCommentsRepository.create(answerComment)
 
     const result = await sut.execute({
       answerCommentId: answerComment.id.toString(),
-      authorId: 'author-2',
+      authorId: 'author-wrong-id',
     })
 
     expect(result.isLeft()).toBe(true)
