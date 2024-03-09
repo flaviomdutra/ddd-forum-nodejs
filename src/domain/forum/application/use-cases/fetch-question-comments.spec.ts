@@ -16,24 +16,24 @@ describe('Fetch Question Comments', () => {
   it('should be able to fetch question comments', async () => {
     await inMemoryQuestionCommentsRepository.create(
       makeQuestionComment({
-        questionId: new UniqueEntityID('question-1'),
+        questionId: new UniqueEntityID('question-id'),
       }),
     )
 
     await inMemoryQuestionCommentsRepository.create(
       makeQuestionComment({
-        questionId: new UniqueEntityID('question-1'),
+        questionId: new UniqueEntityID('question-id'),
       }),
     )
 
     await inMemoryQuestionCommentsRepository.create(
       makeQuestionComment({
-        questionId: new UniqueEntityID('question-1'),
+        questionId: new UniqueEntityID('question-id'),
       }),
     )
 
     const { questionComments } = await sut.execute({
-      questionId: 'question-1',
+      questionId: 'question-id',
       page: 1,
     })
 
@@ -44,13 +44,13 @@ describe('Fetch Question Comments', () => {
     for (let i = 1; i <= 22; i++) {
       await inMemoryQuestionCommentsRepository.create(
         makeQuestionComment({
-          questionId: new UniqueEntityID('question-1'),
+          questionId: new UniqueEntityID('question-id'),
         }),
       )
     }
 
     const { questionComments } = await sut.execute({
-      questionId: 'question-1',
+      questionId: 'question-id',
       page: 2,
     })
 
