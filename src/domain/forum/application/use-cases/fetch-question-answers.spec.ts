@@ -15,22 +15,22 @@ describe('Fetch Question Answers', () => {
   it('should be able to fetch question answers', async () => {
     await inMemoryAnswersRepository.create(
       makeAnswer({
-        questionId: new UniqueEntityID('question-1'),
+        questionId: new UniqueEntityID('question-id'),
       }),
     )
     await inMemoryAnswersRepository.create(
       makeAnswer({
-        questionId: new UniqueEntityID('question-1'),
+        questionId: new UniqueEntityID('question-id'),
       }),
     )
     await inMemoryAnswersRepository.create(
       makeAnswer({
-        questionId: new UniqueEntityID('question-1'),
+        questionId: new UniqueEntityID('question-id'),
       }),
     )
 
     const { answers } = await sut.execute({
-      questionId: 'question-1',
+      questionId: 'question-id',
       page: 1,
     })
 
@@ -41,13 +41,13 @@ describe('Fetch Question Answers', () => {
     for (let i = 1; i <= 22; i++) {
       await inMemoryAnswersRepository.create(
         makeAnswer({
-          questionId: new UniqueEntityID('question-1'),
+          questionId: new UniqueEntityID('question-id'),
         }),
       )
     }
 
     const { answers } = await sut.execute({
-      questionId: 'question-1',
+      questionId: 'question-id',
       page: 2,
     })
 
